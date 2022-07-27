@@ -1,0 +1,33 @@
+<table>
+  <thead>
+    <th>Internal ID</th><th>Amount</th><th>Due on Date</th><th>Selling Price</th><th>created_at</th><th>errors</th>
+  </thead>
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td style="padding:0 15px 0 15px;"><%= invoice.internal_id %></td>
+        <td style="padding:0 15px 0 15px;"><%= invoice.amount %></td>
+        <td style="padding:0 15px 0 15px;"><%= invoice.due_on_date %></td>
+        <td style="padding:0 15px 0 15px;"><%= invoice.selling_price %></td>
+        <td style="padding:0 15px 0 15px;"><%= invoice.created_at.to_date %></td>
+        <td style="padding:0 15px 0 15px;"><%= invoice.valid? ? "" : invoice.errors.full_messages.join(" and ") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</br>
+
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @invoices %>
+  </div>
+
+  </br>
+  
+  <%= will_paginate @invoices, :container => false %>
+</div>
+
+<p>
+  <%= link_to "Return to home", root_path %>
+</p>

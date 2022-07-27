@@ -1,0 +1,24 @@
+<h1>Your Invoices System Home</h1>
+
+<% if current_user %>
+  
+  <p>
+    <%= link_to "Upload Your Invoices", import_invoices_path %>
+  </p>
+
+  <p>
+    <%= link_to "My Invoices", invoices_path %>
+  </p>
+
+  <p>
+    <%= button_to "Sign out", destroy_user_session_path , :method => :delete %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to "Create an Account", new_user_registration_path %>
+  </p>
+  
+  <p>
+    <%= link_to "Sign In", new_user_session_path %>
+  </p>
+<% end %>
